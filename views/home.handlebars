@@ -1,22 +1,35 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <h3 class="masthead-brand">WebScraper</h3>
-      <nav class="nav nav-masthead justify-content-center">
+      {{!-- <h3 class="masthead-brand">WebScraper</h3> --}}
+      {{!-- <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link active" href="#">Home</a>
         <a class="nav-link" href="#">Features</a>
         <a class="nav-link" href="#">Contact</a>
-      </nav>
+      </nav> --}}
     </div>
   </header>
 
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">WebScraper</h1>
-    <p class="lead">WebScraper</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+    <h1 class="cover-heading">The Daily Newsscraper</h1>
+    <p class="lead">Get the latest articles from the NY Times
+    <p class="lead"></p>
+      <a href="/scrape" class="btn btn-lg btn-secondary">Scrape</a>
     </p>
   </main>
+
+  <ul>
+    {{#each articles}}
+    <li>
+      <div>
+        <h3>{{this.title}}</h3>
+        <p>{{this.summary}}</p>
+        <a href="/article/delete/{{this._id}}"><button>delete</button></a>
+
+      </div>
+    </li>
+    {{/each}}
+  </ul>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
