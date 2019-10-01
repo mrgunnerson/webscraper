@@ -40,7 +40,7 @@ var exphbs  = require('express-handlebars')
 var routes = require('./routes')
 var app = express()
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/scraper', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/scraper', {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', function(){
     console.log('db-error')

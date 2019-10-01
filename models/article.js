@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var articleSchema = new Schema({
   title:  String,
   summary: String,
+  url: String,
 //   body:   String,
 //   comments: [{ body: String, date: Date }],
 //   date: { type: Date, default: Date.now },
