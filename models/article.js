@@ -5,6 +5,7 @@ var articleSchema = new Schema({
   title:  String,
   summary: String,
   url: String,
+  comments: [{comment: String}]
 //   body:   String,
 //   comments: [{ body: String, date: Date }],
 //   date: { type: Date, default: Date.now },

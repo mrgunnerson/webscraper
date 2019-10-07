@@ -8,6 +8,15 @@ function home(req, res) {
     res.render("home", { articles: results });
   });
 }
+function get(req, res) {
+  Article.find({ _id: req.params.id }, function(err, result) {
+    if (err) {
+      return err;
+    }
+    console.log(result);
+    res.render("article", result[0]);
+  });
+}
 function del(req, res) {
   Article.deleteOne({ _id: req.params.id }, function(err) {
     if (err) {
@@ -16,7 +25,38 @@ function del(req, res) {
     res.redirect("/");
   });
 }
-module.exports = { home: home, delete: del };
+function addComment(req, res) {
+  console.log(req.body);
+  console.log(req.params);
+  Article.findByIdAndUpdate(
+    req.params.id,
+    { $push: { comments: { comment: req.body.comment } } },
+    {new: true},
+    function(err, result) {
+      console.log(result);
+      if (err) {
+        return err;
+      }
+      res.render("article", result);
+    }
+  );
+}
+function deleteComment(req, res) {
+  console.log(req.params)
+  Article.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { comments: { comment: req.params.commentid } } },
+    {new: true},
+    function(err, result) {
+      console.log(result);
+      if (err) {
+        return err;
+      }
+      res.render("article", result);
+    }
+  );
+}
+module.exports = { home: home, delete: del, get: get, addComment: addComment, deleteComment: deleteComment };
 
 /*
 [ { _id: 5d8c291ce82413d2fa7b94e8,

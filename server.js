@@ -49,6 +49,7 @@ db.once('open', function() {
   // we're connected!
   console.log('connected!')
 });
+app.use(express.urlencoded())
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 // app.get('/', function (req, res) {

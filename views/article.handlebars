@@ -1,0 +1,17 @@
+<div>
+    <h3>{{title}}</h3>
+    <p>{{summary}}</p>
+    {{#each comments}}
+    <p>
+        {{this.comment}}
+        <a href="/comment/{{_id}}/delete/{{this._id}}"><button>Delete Comment</button></a>
+    </p>
+    {{/each}}
+</div>
+
+<form action="/comment/{{_id}}" method="POST">
+    <label for="comment">Tell us your thoughts:</label>
+    <textarea id="comment" name="comment" rows="5" cols="33">
+    </textarea>
+    <button>Add Comment</button>
+</form>

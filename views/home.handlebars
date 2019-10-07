@@ -24,6 +24,7 @@
       <div>
         <h3>{{this.title}}</h3>
         <p>{{this.summary}}</p>
+        <a href="/article/{{this._id}}"><p>Comments: {{this.comments.length}}</p></a>
         <a href="{{this.url}}"><p>link</p></a>
         <a href="/article/delete/{{this._id}}"><button>delete</button></a>
 
